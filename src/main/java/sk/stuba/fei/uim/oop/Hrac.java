@@ -8,10 +8,10 @@ public class Hrac {
     int pozicia;
 
     public Hrac(String meno, int peniaze, boolean zivot, boolean vezenie, int pozicia) {
-        this.meno = KeyboardInput.readString("Zadajte meno hraca: ");
-        this.peniaze = 50000;
-        this.zivot = true;
-        this.vezenie = false;
-        this.pozicia = 0;
+        this.meno = meno;
+        this.peniaze = peniaze;
+        this.zivot = zivot;
+        this.vezenie = vezenie;
+        this.pozicia = pozicia;
     }
 }
