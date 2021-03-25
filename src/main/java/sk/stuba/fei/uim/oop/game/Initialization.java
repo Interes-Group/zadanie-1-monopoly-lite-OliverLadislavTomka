@@ -33,36 +33,36 @@ public class Initialization {
         for (int i = 0; i < 24; i++) {
             switch (i){
                 case 0:
-                    var newStart = new TileStart(i,0,false,0,0);
+                    var newStart = new TileStart(i);
                     hraciePole.add(newStart);
                     break;
                 case 3:
                 case 15:
-                    var newChance = new TileChance(i,0,false,0,0);
+                    var newChance = new TileChance(i);
                     hraciePole.add(newChance);
                     break;
                 case 6:
-                    var newPrison = new TilePrison(i,0,false,0,0);
+                    var newPrison = new TilePrison(i);
                     hraciePole.add(newPrison);
                     break;
                 case 9:
-                    var newTax = new TileTax(i,0,false,0,1000);
+                    var newTax = new TileTax(i);
                     hraciePole.add(newTax);
                     break;
                 case 12:
-                    var newChill = new TileChill(i,0,false,0,0);
+                    var newChill = new TileChill(i);
                     hraciePole.add(newChill);
                     break;
                 case 18:
-                    var newPolice = new TilePolice(i,0,false,0,0);
+                    var newPolice = new TilePolice(i);
                     hraciePole.add(newPolice);
                     break;
                 case 21:
-                    var newSuperTax = new TileSuperTax(i,0,false,0,1000);
+                    var newSuperTax = new TileSuperTax(i);
                     hraciePole.add(newSuperTax);
                     break;
                 default:
-                    var newBasicField = new TileBasicField(i,0,false,0,1000);
+                    var newBasicField = new TileBasicField(i);
                     hraciePole.add(newBasicField);
                     break;
             }
