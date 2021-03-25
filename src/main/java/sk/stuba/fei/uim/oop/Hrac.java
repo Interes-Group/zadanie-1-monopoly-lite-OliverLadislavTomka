@@ -1,17 +1,24 @@
 package sk.stuba.fei.uim.oop;
 
+import java.util.ArrayList;
+
 public class Hrac {
     String meno;
     int peniaze;
-    boolean zivot;
-    boolean vezenie;
+    int vezenieCount=0;
+    boolean vezenie=false;
     int pozicia;
+    int id;
 
-    public Hrac(String meno, int peniaze, boolean zivot, boolean vezenie, int pozicia) {
+    public Hrac(String meno, int peniaze, boolean vezenie, int pozicia,int id) {
         this.meno = meno;
         this.peniaze = peniaze;
-        this.zivot = zivot;
         this.vezenie = vezenie;
         this.pozicia = pozicia;
+        this.id = id;
+    }
+
+    public String getMeno() {
+        return meno;
     }
 }
