@@ -1,8 +1,6 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.player;
 
-import java.util.ArrayList;
-
-public class Hrac {
+public class Player {
     String meno;
     int peniaze;
     int vezenieCount=0;
@@ -10,7 +8,7 @@ public class Hrac {
     int pozicia;
     int id;
 
-    public Hrac(String meno, int peniaze, boolean vezenie, int pozicia,int id) {
+    public Player(String meno, int peniaze, boolean vezenie, int pozicia, int id) {
         this.meno = meno;
         this.peniaze = peniaze;
         this.vezenie = vezenie;
@@ -21,4 +19,6 @@ public class Hrac {
     public String getMeno() {
         return meno;
     }
+
+    public int getId() { return id; }
 }
