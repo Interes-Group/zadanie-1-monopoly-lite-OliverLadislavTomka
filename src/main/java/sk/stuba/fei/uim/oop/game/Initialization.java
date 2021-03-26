@@ -1,5 +1,6 @@
 package sk.stuba.fei.uim.oop.game;
 
+import sk.stuba.fei.uim.oop.chance.*;
 import sk.stuba.fei.uim.oop.player.Player;
 import sk.stuba.fei.uim.oop.tiles.*;
 import sk.stuba.fei.uim.oop.tools.KeyboardInput;
@@ -10,7 +11,8 @@ public class Initialization {
 
     ArrayList<Player> aktivniHraci = vytvorHracov();
     ArrayList<Tile> hraciePole = vytvorHraciePole();
-    int playerCount;
+    ArrayList<Chance> poleSanca =vytvorSancu();
+    ArrayList<Chance> poleSanca2 = new ArrayList<>();
 
     public void hra(){
         int i = 0;
@@ -70,7 +72,10 @@ public class Initialization {
                 }
                 else if (hraciePole.get(newPos) instanceof TileChance){
                     System.out.println("YOU TOOK THE CHANCE CARD!");
-
+                    poleSanca.get(0).funkcia(aktivniHraci.get(i),2,diceRoll()*200);
+                    var tmp = poleSanca.get(0);
+                    poleSanca.remove(0);
+                    poleSanca.add(tmp);
                 }
                 else if (hraciePole.get(newPos) instanceof TileChill){
                     System.out.println("You are now in Chill and Relax zone.");
@@ -136,7 +141,7 @@ public class Initialization {
 
 
     private ArrayList<Player> vytvorHracov(){
-        playerCount = KeyboardInput.readInt("Enter number of players");
+        int playerCount = KeyboardInput.readInt("Enter number of players");
         ArrayList<Player> aktivniHraci = new ArrayList<>();
         for (int i = 0; i < playerCount; i++) {
             Player newPlayer = new Player(KeyboardInput.readString("Zadajte meno hraca"), 30000,  false, 0, i);
@@ -188,10 +193,41 @@ public class Initialization {
         }
         return hraciePole;
     }
+
     private int diceRoll(){
         Random rand = new Random();
         int number = rand.nextInt((6-1)+1)+1;
         return number;
+    }
+
+    private ArrayList<Chance> vytvorSancu(){
+        ArrayList<Chance> poleSanca = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            switch (i%5){
+                case 0:
+                    var newPrison = new GoToPrison();
+                    poleSanca.add(newPrison);
+                    break;
+                case 1:
+                    var newGetMoney = new GetMoney();
+                    poleSanca.add(newGetMoney);
+                    break;
+                case 2:
+                    var newPayMoney= new PayMoney();
+                    poleSanca.add(newPayMoney);
+                    break;
+                case 3:
+                    var newMoveForvard = new MoveForward();
+                    poleSanca.add(newMoveForvard);
+                    break;
+                case 4:
+                    var newMoveBackward = new MoveBackward();
+                    poleSanca.add(newMoveBackward);
+                    break;
+            }
+
+        }
+        return poleSanca;
     }
 
 }
