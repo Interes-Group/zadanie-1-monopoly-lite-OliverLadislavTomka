@@ -1,22 +1,19 @@
 package sk.stuba.fei.uim.oop.tiles;
 
 
-import sk.stuba.fei.uim.oop.player.Player;
-import sk.stuba.fei.uim.oop.game.Initialization;
-
-import java.util.ArrayList;
-
 public class TileBasicField extends Tile{
     int owner;
     int price;
     int fine;
+    boolean isOwned;
 
     public TileBasicField(int numberOfTile) {
         super(numberOfTile);
-        this.owner = 0;
+        this.owner = 50;
         this.price = 5000;
         this.fine = 500;
         this.name = "Basic Field";
+        this.isOwned = false;
     }
 
     public int getFine() {
@@ -39,5 +36,11 @@ public class TileBasicField extends Tile{
         return name;
     }
 
+    public boolean isOwned() {
+        return isOwned;
+    }
 
+    public void setOwned(boolean owned) {
+        isOwned = owned;
+    }
 }
