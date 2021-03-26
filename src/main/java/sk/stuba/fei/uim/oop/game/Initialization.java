@@ -9,12 +9,47 @@ import java.util.*;
 public class Initialization {
 
     ArrayList<Player> aktivniHraci = vytvorHracov();
-    ArrayList<Tile> hraciePole;
-    
+    ArrayList<Tile> hraciePole = vytvorHraciePole();
+    int playerCount;
+
+
+
+
+
+    //((TileChance)aktivniHraci.get(i)).
+
+    public void hra(){
+        int i = 0;
+        while (aktivniHraci.size()>1){
+            String vypisMena = aktivniHraci.get(i).getMeno();
+            int dice = diceRoll();
+            int curPos = aktivniHraci.get(i).getPozicia();
+            System.out.println(vypisMena + "'s turn!");
+            System.out.println("Current position is " + curPos);
+            System.out.println("Name of the tile is " + hraciePole.get(curPos).getName());
+
+
+            if (aktivniHraci.get(i).isVezenie()) {
+
+            }
+
+
+
+
+            System.out.println("The dice number is " + dice);
+
+
+
+            i++;
+            if (i == aktivniHraci.size()) i = 0;
+        }
+    }
+
+
     public ArrayList<Player> vytvorHracov(){
-        int a = KeyboardInput.readInt("Enter number of players");
+        playerCount = KeyboardInput.readInt("Enter number of players");
         ArrayList<Player> aktivniHraci = new ArrayList<>();
-        for (int i = 0; i < a; i++) {
+        for (int i = 0; i < playerCount; i++) {
             Player newPlayer = new Player(KeyboardInput.readString("Zadajte meno hraca"), 30000,  false, 0, i+1);
             aktivniHraci.add(newPlayer);
         }
@@ -70,4 +105,10 @@ public class Initialization {
         }
         return hraciePole;
     }
+    public int diceRoll(){
+        Random rand = new Random();
+        int number = rand.nextInt((6-1)+1)+1;
+        return number;
+    }
+
 }

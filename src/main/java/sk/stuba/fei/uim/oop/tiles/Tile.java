@@ -1,8 +1,13 @@
 package sk.stuba.fei.uim.oop.tiles;
 
+import sk.stuba.fei.uim.oop.player.Player;
+
+import java.util.ArrayList;
+
 public abstract class Tile {
     protected int numberOfTile;
     boolean isBuyable;
+    String name;
 
 
     public Tile(int numberOfTile) {
@@ -18,4 +23,7 @@ public abstract class Tile {
         return numberOfTile;
     }
 
+    public String getName() {
+        return name;
+    }
 }

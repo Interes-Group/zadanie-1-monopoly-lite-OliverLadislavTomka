@@ -4,5 +4,6 @@ public class TileStart extends Tile{
 
     public TileStart(int numberOfTile) {
         super(numberOfTile);
+        this.name = "START";
     }
 }

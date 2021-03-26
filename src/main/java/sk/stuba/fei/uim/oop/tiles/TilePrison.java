@@ -4,5 +4,6 @@ public class TilePrison extends Tile{
 
     public TilePrison(int numberOfTile) {
         super(numberOfTile);
+        this.name = "PRISON";
     }
 }

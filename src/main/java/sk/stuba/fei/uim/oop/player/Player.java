@@ -21,4 +21,37 @@ public class Player {
     }
 
     public int getId() { return id; }
+
+    public int getPozicia() {
+        return pozicia;
+    }
+
+    public void setPozicia(int pozicia) {
+        this.pozicia = pozicia;
+    }
+
+    public int getPeniaze() {
+        return peniaze;
+    }
+
+    public void setPeniaze(int peniaze) {
+        this.peniaze = peniaze;
+    }
+
+    public int getVezenieCount() {
+        return vezenieCount;
+    }
+
+    public void setVezenieCount(int vezenieCount) {
+        this.vezenieCount = vezenieCount;
+    }
+
+    public boolean isVezenie() {
+        return vezenie;
+    }
+
+    public void setVezenie(boolean vezenie) {
+        this.vezenie = vezenie;
+    }
+
 }
