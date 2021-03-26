@@ -60,8 +60,8 @@ public class Initialization {
                         System.out.println("You stepped on your own Tile!");
                     }
                     else if (((TileBasicField) hraciePole.get(newPos)).getPrice() <= aktivniHraci.get(i).getPeniaze()){
-                        System.out.print("Do you want to buy this Tile?");
-                        boolean buyOrNot=KeyboardInput.readBoolean();
+                        System.out.print("Do you want to buy this Tile? Enter y/n:");
+                        boolean buyOrNot=KeyboardInput.readBooleanv2();
                         if (buyOrNot){
                             aktivniHraci.get(i).setPeniaze(aktivniHraci.get(i).getPeniaze()
                                                         - ((TileBasicField) hraciePole.get(newPos)).getPrice());
@@ -141,10 +141,10 @@ public class Initialization {
 
 
     private ArrayList<Player> vytvorHracov(){
-        int playerCount = KeyboardInput.readInt("Enter number of players");
+        int playerCount = KeyboardInput.readInt("Enter number of players in range <2,6>");
         ArrayList<Player> aktivniHraci = new ArrayList<>();
         for (int i = 0; i < playerCount; i++) {
-            Player newPlayer = new Player(KeyboardInput.readString("Zadajte meno hraca"), 30000,  false, 0, i);
+            Player newPlayer = new Player(KeyboardInput.readString("Enter name for player n." + (i+1)), 30000,  false, 0, i);
             aktivniHraci.add(newPlayer);
         }
         return aktivniHraci;

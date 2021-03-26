@@ -1,5 +1,5 @@
 package sk.stuba.fei.uim.oop.tools;
-
+import java.io.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -101,9 +101,23 @@ public class KeyboardInput {
         return readInt(numberOfTries, INPUT_FAILURE_TEXT);
     }
 
+    //moje sposob spracovania poctu hracov
+
     public static int readInt(String promptText) {
-        printPrompt(promptText);
-        return readInt();
+        boolean x = true;
+        String cislo1;
+        int cislo=0;
+        while (x){
+            try {
+                printPrompt(promptText);
+                cislo1 = readString();
+                cislo = Integer.parseInt(cislo1);
+                if (cislo < 7 && cislo > 1) {
+                    x = !x;
+                } else System.out.println("Input only integer in range <2,6>!");
+            } catch(Exception e){}
+        }
+        return cislo;
     }
 
     public static int readInt() {
@@ -169,6 +183,27 @@ public class KeyboardInput {
         } else {
             throw new IllegalArgumentException("Invalid boolean input! Input " + input + " cannot be parsed into boolean value.");
         }
+    }
+
+    //moja v2 z readBooleany()
+
+    public static boolean readBooleanv2() {
+        boolean x=true,z=true;
+        while (x) {
+            String input = readString();
+            String finalInput = input;
+            if (input.isEmpty() || Arrays.stream(FALSE_INPUTS).anyMatch(s -> s.equalsIgnoreCase(finalInput))) {
+                x=!x;
+                z = false;
+            }
+            else if (Arrays.stream(TRUE_INPUTS).anyMatch(s -> s.equalsIgnoreCase(input))) {
+                x=!x;
+                z=  true;
+            }
+            else System.out.println("Input " + finalInput + " is unrecognized by program!!!\nEnter values [y] for yes and [n] for no!");
+            }
+
+        return z;
     }
 
     private static void printPrompt(String prompt) {
