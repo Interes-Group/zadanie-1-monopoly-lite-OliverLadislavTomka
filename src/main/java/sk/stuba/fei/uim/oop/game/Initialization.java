@@ -10,9 +10,8 @@ import java.util.*;
 public class Initialization {
 
     ArrayList<Player> aktivniHraci = vytvorHracov();
-    ArrayList<Tile> hraciePole = vytvorHraciePole();
+    protected ArrayList<Tile> hraciePole = vytvorHraciePole();
     ArrayList<Chance> poleSanca =vytvorSancu();
-    ArrayList<Chance> poleSanca2 = new ArrayList<>();
 
     public void hra(){
         int i = 0;
@@ -37,7 +36,7 @@ public class Initialization {
             }
             else {
                 int dice = diceRoll();
-                System.out.println("You threw dice with number: " + dice);
+                System.out.println("Throwing the dice... " + dice);
                 int newPos=aktivniHraci.get(i).getPozicia()+dice;
                 if (newPos > 23) {
                     newPos = newPos % 24;
@@ -52,7 +51,8 @@ public class Initialization {
                 if (hraciePole.get(newPos) instanceof TileBasicField){
                     if ((((TileBasicField) hraciePole.get(newPos)).isOwned()) && (((TileBasicField) hraciePole.get(newPos)).getOwner() != aktivniHraci.get(i).getId())){
                         aktivniHraci.get(i).setPeniaze(aktivniHraci.get(i).getPeniaze()-((TileBasicField) hraciePole.get(newPos)).getFine());
-                        aktivniHraci.get(((TileBasicField) hraciePole.get(newPos)).getOwner()).setPeniaze(aktivniHraci.get(((TileBasicField) hraciePole.get(newPos)).getOwner()).getPeniaze()+ ((TileBasicField) hraciePole.get(newPos)).getFine());
+                        aktivniHraci.get(((TileBasicField) hraciePole.get(newPos)).getOwner()).setPeniaze(aktivniHraci.get(((TileBasicField)
+                                hraciePole.get(newPos)).getOwner()).getPeniaze()+ ((TileBasicField) hraciePole.get(newPos)).getFine());
                         System.out.println("You paid the fee for stepping on someone's else Tile");
                         System.out.println("Money: " + aktivniHraci.get(i).getPeniaze());
                     }
@@ -125,7 +125,7 @@ public class Initialization {
                 aktivniHraci.remove(i);
                 i--;
                 int hajzel=0;
-                for (Player p:aktivniHraci) {
+                for (int k=0;k<aktivniHraci.size();k++) {
                     aktivniHraci.get(hajzel).setId(hajzel);
                     hajzel++;
                 }
@@ -189,15 +189,13 @@ public class Initialization {
                     hraciePole.add(newBasicField);
                     break;
             }
-
         }
         return hraciePole;
     }
 
     private int diceRoll(){
         Random rand = new Random();
-        int number = rand.nextInt((6-1)+1)+1;
-        return number;
+        return rand.nextInt((6 - 1) + 1) + 1;
     }
 
     private ArrayList<Chance> vytvorSancu(){
@@ -227,6 +225,7 @@ public class Initialization {
             }
 
         }
+        Collections.shuffle(poleSanca);
         return poleSanca;
     }
 

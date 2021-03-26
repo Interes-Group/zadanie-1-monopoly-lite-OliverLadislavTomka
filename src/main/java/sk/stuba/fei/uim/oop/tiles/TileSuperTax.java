@@ -1,7 +1,7 @@
 package sk.stuba.fei.uim.oop.tiles;
 
 public class TileSuperTax extends TileTax{
-    int fine;
+    private final int fine;
     public TileSuperTax(int numberOfTile) {
         super(numberOfTile);
         this.name = "SUPER TAX";

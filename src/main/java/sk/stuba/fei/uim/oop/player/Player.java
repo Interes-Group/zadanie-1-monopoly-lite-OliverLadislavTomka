@@ -4,7 +4,7 @@ public class Player {
     String meno;
     int peniaze;
     int vezenieCount=0;
-    boolean vezenie=false;
+    boolean vezenie;
     int pozicia;
     int id;
 

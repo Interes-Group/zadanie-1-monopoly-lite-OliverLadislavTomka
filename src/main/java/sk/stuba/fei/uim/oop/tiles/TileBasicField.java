@@ -2,10 +2,10 @@ package sk.stuba.fei.uim.oop.tiles;
 
 
 public class TileBasicField extends Tile{
-    int owner;
-    int price;
-    int fine;
-    boolean isOwned;
+    private int owner;
+    private int price;
+    private int fine;
+    private boolean isOwned;
 
     public TileBasicField(int numberOfTile) {
         super(numberOfTile);
